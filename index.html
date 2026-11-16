@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr Chips | Potchefstroom's Best Fast Food Since 2010</title>
+  <meta name="description" content="Mr Chips — serving Potchefstroom's freshest fast food since 2010. Burgers, chicken tikka, wors rolls, chips, and more. Order now!">
+  <meta name="theme-color" content="#DC2F2F">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mr Chips — Fresh • Fast • Affordable">
+  <meta property="og:description" content="Potchefstroom's best fast food since 2010. Burgers, chicken tikka, chips, and more at 65 Cassim Street, Mohadin.">
+  <meta property="og:type" content="restaurant.menu">
+  <meta property="og:url" content="https://mrchipspotch.co.za">
+  <meta property="og:locale" content="en_ZA">
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Anton + Nunito -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Emoji favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍟</text></svg>">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FastFoodRestaurant",
+    "name": "Mr Chips",
+    "image": "https://mrchipspotch.co.za/og-image.jpg",
+    "url": "https://mrchipspotch.co.za",
+    "telephone": "+27-79-823-8095",
+    "servesCuisine": ["Fast Food", "South African"],
+    "priceRange": "R10 – R98",
+    "founded": "2010",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "65 Cassim Street, Mohadin",
+      "addressLocality": "Potchefstroom",
+      "addressRegion": "North West",
+      "postalCode": "2531",
+      "addressCountry": "ZA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -26.7167,
+      "longitude": 27.1
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "bestRating": "5",
+      "ratingCount": "127"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "10:00", "closes": "18:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "10:00", "closes": "12:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "14:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "", "closes": "" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="navbar" role="banner">
+    <div class="nav__inner container">
+      <a href="#" class="nav__logo" aria-label="Mr Chips home">
+        <span class="nav__logo-text">MR<span class="nav__logo-accent">CHIPS</span></span>
+      </a>
+
+      <nav class="nav__menu" id="navMenu" role="navigation" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a href="#menu" class="nav__link">Menu</a></li>
+          <li><a href="#specials" class="nav__link">Specials</a></li>
+          <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#location" class="nav__link">Location</a></li>
+          <li><a href="#reviews" class="nav__link">Reviews</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="nav__status-btn" id="statusBtn" aria-live="polite" disabled>
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">Checking...</span>
+        </button>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fa-regular fa-moon" id="themeIcon" aria-hidden="true"></i>
+        </button>
+
+        <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+          <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+          <span class="cart-badge" id="cartBadge" hidden>0</span>
+        </button>
+
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__content reveal">
+            <span class="hero__badge">🔥 Since 2010</span>
+            <h1 class="hero__title">
+              Fresh. Hot.<br>
+              <span class="hero__title--accent">Loaded.</span>
+            </h1>
+            <p class="hero__subtitle">Crispy Chips. Juicy Bites.</p>
+            <div class="hero__actions">
+              <a href="#menu" class="btn btn--primary btn--hero">
+                See Menu 🍔
+              </a>
+              <a href="https://wa.me/27798238095?text=Hi%20Mr%20Chips!%0A%0A%0AName%3A%20___%0APickup%20time%3A%20___" target="_blank" rel="noopener" class="btn btn--outline">
+                Order Now
+              </a>
+            </div>
+          </div>
+          <div class="hero__images reveal">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80" alt="Juicy burger with fresh toppings — Mr Chips signature" class="hero__img--main" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECIALS BAR -->
+    <section class="specials-bar" id="specials">
+      <div class="specials-bar__inner">
+        <div class="specials-bar__track">
+          <span class="specials-bar__item">🔥 Daily Special — 2 Viennas and Small Chips — Only R50</span>
+          <span class="specials-bar__sep">✦</span>
+          <span class="specials-bar__item">🍟 Fresh chips made daily — Small R25 | Large R45 | Extra-large R65</span>
+          <span class="specials-bar__sep">✦</span>
+          <span class="specials-bar__item">🥤 Slush Puppies — from R15 (S R15, M R25, L R30)</span>
+          <span class="specials-bar__sep">✦</span>
+          <span class="specials-bar__item">🔥 Daily Special — 2 Viennas and Small Chips — Only R50</span>
+          <span class="specials-bar__sep">✦</span>
+          <span class="specials-bar__item">🍟 Fresh chips made daily — Small R25 | Large R45 | Extra-large R65</span>
+          <span class="specials-bar__sep">✦</span>
+          <span class="specials-bar__item">🥤 Slush Puppies — from R15 (S R15, M R25, L R30)</span>
+          <span class="specials-bar__sep">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats section" id="stats">
+      <div class="container">
+        <div class="stats__grid">
+          <div class="stats__card reveal">
+            <span class="stats__number" data-count="15">0</span>
+            <span class="stats__suffix">+</span>
+            <span class="stats__label">Years Serving Mohadin</span>
+          </div>
+          <div class="stats__card reveal">
+            <span class="stats__number" data-count="50">0</span>
+            <span class="stats__suffix">+</span>
+            <span class="stats__label">Daily Customers</span>
+          </div>
+          <div class="stats__card reveal">
+            <span class="stats__number" data-count="15">0</span>
+            <span class="stats__suffix">+</span>
+            <span class="stats__label">Menu Items</span>
+          </div>
+          <div class="stats__card reveal">
+            <span class="stats__number" data-count="100">0</span>
+            <span class="stats__suffix">+</span>
+            <span class="stats__label">Happy Customers Daily</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu section" id="menu">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Choose Your Feast</span>
+          <h2 class="section__title">Our Menu</h2>
+          <p class="section__desc">Freshly made, perfectly seasoned, ready when you are</p>
+        </div>
+
+        <!-- Category tabs -->
+        <div class="menu__tabs reveal" role="tablist" aria-label="Menu categories">
+          <button class="menu__tab active" role="tab" aria-selected="true" data-category="chips_combos" id="tab-chips-combos">
+            Chips &amp; Combos
+          </button>
+          <button class="menu__tab" role="tab" aria-selected="false" data-category="meals_rolls" id="tab-meals-rolls">
+            Meals &amp; Rolls
+          </button>
+          <button class="menu__tab" role="tab" aria-selected="false" data-category="chicken" id="tab-chicken">
+            Chicken Tikka
+          </button>
+        </div>
+
+        <!-- Menu grid -->
+        <div class="menu__grid" id="menuGrid" role="tabpanel">
+          <!-- Dynamically rendered by JS -->
+        </div>
+
+        <!-- Promo card (rendered in menu grid by JS) -->
+        <div class="menu-card menu-card--promo reveal" id="promoCard" hidden>
+          <div class="menu-card__promo-content">
+            <span class="menu-card__promo-badge">🔥 Limited Offer</span>
+            <h3 class="menu-card__promo-title">Today's Special</h3>
+            <p class="menu-card__promo-desc">2 Viennas and Small Chips</p>
+            <div class="menu-card__promo-price">
+              <span class="menu-card__promo-old">R60</span>
+              <span class="menu-card__promo-current">R50</span>
+            </div>
+          </div>
+          <a href="https://wa.me/27798238095?text=I%27d%20like%20to%20order%20the%20Daily%20Special%3A%202%20Viennas%20and%20Small%20Chips%20-%20R50%0A%0A%0AName%3A%20___%0APickup%20time%3A%20___" target="_blank" rel="noopener" class="btn btn--primary btn--full">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            Order Now — R50
+          </a>
+        </div>
+
+        <!-- Drinks sub-section -->
+        <div class="drinks section" id="drinks">
+          <div class="section__header reveal">
+            <span class="section__label">Something to sip</span>
+            <h2 class="section__title">Drinks &amp; Desserts</h2>
+          </div>
+
+          <div class="drinks__tabs reveal" role="tablist" aria-label="Drinks categories">
+            <button class="drinks__tab active" role="tab" aria-selected="true" data-drink-cat="slush">Slush Puppie</button>
+            <button class="drinks__tab" role="tab" aria-selected="false" data-drink-cat="slush_crush">Slush Puppy Crush</button>
+            <button class="drinks__tab" role="tab" aria-selected="false" data-drink-cat="icecream">Ice Cream</button>
+          </div>
+
+          <div class="drinks__content" id="drinksContent">
+            <!-- Dynamically rendered -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ABOUT -->
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="about__grid">
+          <div class="about__visual reveal">
+            <div class="about__illustration" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=500&q=80" alt="" class="about__image" loading="lazy">
+            </div>
+          </div>
+          <div class="about__content reveal">
+            <span class="section__label">Our Story</span>
+            <h2 class="section__title">The Mr Chips Story</h2>
+            <p class="about__text">
+              Since <strong>2010</strong>, Mr Chips has been serving Potchefstroom's Mohadin community 
+              with the freshest, most flavourful fast food in town. What started as a small chip shop 
+              has grown into a local favourite — known for our <strong>signature chicken tikka</strong>, 
+              <strong>perfectly grilled wors rolls</strong>, and chips that keep our customers coming back.
+            </p>
+            <p class="about__text">
+              Every meal is prepared fresh, seasoned to perfection, and served with a smile. 
+              We believe great food doesn't have to be complicated — just quality ingredients, 
+              the right spices, and a whole lot of heart.
+            </p>
+            <div class="about__values">
+              <div class="about__value">
+                <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+                <span>Fresh Ingredients</span>
+              </div>
+              <div class="about__value">
+                <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+                <span>Fast Service</span>
+              </div>
+              <div class="about__value">
+                <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+                <span>Affordable Prices</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS + LOCATION -->
+    <span id="location" style="display:none"></span>
+    <section class="reviews section" id="reviews">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">What They Say</span>
+          <h2 class="section__title">Customer Reviews</h2>
+          <div class="reviews__rating">
+            <div class="reviews__stars" aria-label="4.5 out of 5 stars">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star-half-stroke" aria-hidden="true"></i>
+            </div>
+            <span class="reviews__score">4.5</span>
+            <span class="reviews__count">(127 reviews)</span>
+          </div>
+        </div>
+
+        <div class="reviews__split">
+          <div class="reviews__list reveal">
+            <article class="review-card">
+              <div class="review-card__stars">
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+              </div>
+              <p class="review-card__text">
+                "Best chips in Potchefstroom! Always fresh, always hot. 
+                The chicken tikka is incredible too. A Mohadin gem."
+              </p>
+              <div class="review-card__author">
+                <div class="review-card__avatar">TK</div>
+                <div>
+                  <span class="review-card__name">Thabo K.</span>
+                  <span class="review-card__source">
+                    <i class="fa-brands fa-google" aria-hidden="true"></i> Google Reviews
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-card__stars">
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+              </div>
+              <p class="review-card__text">
+                "My kids love the ice cream slushies! Affordable, friendly service 
+                and the food is always ready on time."
+              </p>
+              <div class="review-card__author">
+                <div class="review-card__avatar">LM</div>
+                <div>
+                  <span class="review-card__name">Lerato M.</span>
+                  <span class="review-card__source">
+                    <i class="fa-brands fa-facebook" aria-hidden="true"></i> Facebook
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-card__stars">
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+              </div>
+              <p class="review-card__text">
+                "Been coming here for years. The wors roll and chips is my go-to. 
+                Best fast food in town, no question."
+              </p>
+              <div class="review-card__author">
+                <div class="review-card__avatar">JP</div>
+                <div>
+                  <span class="review-card__name">Johan P.</span>
+                  <span class="review-card__source">
+                    <i class="fa-brands fa-google" aria-hidden="true"></i> Google Reviews
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="reviews__map-col reveal">
+            <div class="reviews__map-card">
+              <i class="fa-solid fa-location-dot reviews__map-icon" aria-hidden="true"></i>
+              <h3>Visit Us</h3>
+              <p>65 Cassim Street, Mohadin<br>Potchefstroom, 2531</p>
+              <div class="reviews__contact">
+                <a href="tel:+27798238095" class="reviews__phone">079 823 8095</a>
+                <a href="tel:+27763151166" class="reviews__phone">076 315 1166</a>
+              </div>
+              <div class="reviews__hours">
+                <span>Mon–Thu 10am–6:30pm</span>
+                <span>Fri 10am–12:30pm &amp; 2pm–7pm</span>
+                <span>Sat 10am–7pm</span>
+                <span class="reviews__closed">Sun Closed</span>
+              </div>
+            </div>
+            <div class="reviews__map-container" id="mapContainer">
+              <div class="reviews__map-placeholder">
+                <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+                <p>Loading map...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#" class="nav__logo">
+            <span class="nav__logo-text">MR<span class="nav__logo-accent">CHIPS</span></span>
+          </a>
+          <p class="footer__desc">Potchefstroom's best fast food since 2010. Fresh, fast, and affordable — served with a smile.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook" class="footer__social-link"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Instagram" class="footer__social-link"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://wa.me/27798238095" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer__social-link"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="footer__links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#specials">Specials</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#location">Location &amp; Hours</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+27798238095">079 823 8095</a></li>
+            <li><a href="tel:+27763151166">076 315 1166</a></li>
+            <li><a href="https://wa.me/27798238095" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><address>65 Cassim St, Mohadin<br>Potchefstroom, 2531</address></li>
+          </ul>
+        </div>
+
+        <div class="footer__newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get specials and news straight to your inbox.</p>
+          <form class="footer__form" id="newsletterForm">
+            <label for="newsletterEmail" class="sr-only">Email address</label>
+            <input type="email" id="newsletterEmail" placeholder="Your email" required class="footer__input">
+            <button type="submit" class="footer__submit">
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              <span class="sr-only">Subscribe</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 Mr Chips. All rights reserved.</p>
+        <p>Made with <i class="fa-solid fa-heart" aria-hidden="true"></i> in Potchefstroom</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== CART PANEL ===== -->
+  <div class="cart-overlay" id="cartOverlay" role="dialog" aria-modal="true" aria-label="Shopping cart" hidden>
+    <div class="cart-panel" id="cartPanel">
+      <div class="cart-panel__header">
+        <h2 class="cart-panel__title">
+          <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+          Your Order
+        </h2>
+        <button class="cart-panel__close" id="cartClose" aria-label="Close cart">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="cart-panel__body" id="cartBody">
+        <div class="cart-empty" id="cartEmpty">
+          <i class="fa-solid fa-cart-plus" aria-hidden="true"></i>
+          <p>Your cart is empty</p>
+          <span>Add items from our menu to get started</span>
+        </div>
+        <div class="cart-items" id="cartItems" hidden></div>
+      </div>
+
+      <div class="cart-panel__footer" id="cartFooter" hidden>
+        <div class="cart-panel__total">
+          <span>Total</span>
+          <span class="cart-panel__total-amount" id="cartTotal">R0</span>
+        </div>
+        <button class="btn btn--primary btn--full btn--large" id="orderWhatsAppBtn">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          Order via WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- ===== MOBILE BOTTOM BAR ===== -->
+  <div class="mobile-bar" id="mobileBar">
+    <a href="#menu" class="mobile-bar__btn">
+      <i class="fa-solid fa-utensils" aria-hidden="true"></i>
+      <span>Menu</span>
+    </a>
+    <button class="mobile-bar__cta" id="mobileOrderBtn">
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+      <span>Order Now</span>
+    </button>
+    <button class="mobile-bar__btn" id="mobileCartBtn">
+      <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+      <span>Cart</span>
+      <span class="cart-badge mobile-cart-badge" id="mobileCartBadge" hidden>0</span>
+    </button>
+  </div>
+
+  <!-- Script -->
+  <script src="app.js" defer></script>
+</body>
+</html>
