@@ -1,0 +1,18 @@
+{
+  "name": "Mr Chips",
+  "short_name": "Mr Chips",
+  "description": "Chips, combos, chicken and cold drinks in Mohadin, Potchefstroom.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fffaf0",
+  "theme_color": "#12233f",
+  "icons": [
+    {
+      "src": "STK-20251014-WA0008.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ]
+}

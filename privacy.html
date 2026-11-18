@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Notice | Mr Chips</title>
+  <meta name="description" content="How Mr Chips handles WhatsApp ordering, specials updates, map links and site data.">
+  <meta name="theme-color" id="metaTheme" content="#fffaf0">
+  <link rel="canonical" href="https://logicwithluqman.github.io/MR_CHIPS_Website/privacy.html">
+  <link rel="icon" type="image/webp" href="STK-20251014-WA0008.webp">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var theme = "light";
+      try {
+        var saved = localStorage.getItem("mrchips-theme");
+        if (saved === "dark" || saved === "light") theme = saved;
+        else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+      } catch (error) {}
+      root.setAttribute("data-theme", theme);
+    })();
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <main class="legal container" id="main">
+    <div class="legal__header">
+      <a href="./">← Back to Mr Chips</a>
+    </div>
+    <h1>Privacy Notice</h1>
+    <p>This notice explains what happens when you use the Mr Chips website. It is written for customers in South Africa and applies the principles of POPIA.</p>
+
+    <section>
+      <h2>What we collect</h2>
+      <p>When you place an order, the cart keeps item names and quantities in your browser using localStorage. Prices are looked up from the site's menu data. No card details are collected on this website.</p>
+      <p>If you choose to receive specials on WhatsApp, you send us a message yourself. You can reply STOP at any time to opt out.</p>
+    </section>
+
+    <section>
+      <h2>What we do not do</h2>
+      <p>We do not run an email newsletter, we do not sell personal information, and we do not use advertising trackers on this site.</p>
+    </section>
+
+    <section>
+      <h2>Third parties</h2>
+      <p>WhatsApp is used to send order requests and specials updates. When you open Google Maps, Google receives your request. These services have their own privacy notices.</p>
+      <p>The site uses system fonts and local SVG icons, so no third-party font or icon service loads when you open a page.</p>
+    </section>
+
+    <section>
+      <h2>Your choices</h2>
+      <p>You can clear your cart and theme preference by clearing site data in your browser. You can stop WhatsApp updates by replying STOP. To ask about information you shared with us, contact Mr Chips on 079 823 8095.</p>
+    </section>
+  </main>
+</body>
+</html>

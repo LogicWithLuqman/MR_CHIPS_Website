@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://logicwithluqman.github.io/MR_CHIPS_Website/sitemap.xml
