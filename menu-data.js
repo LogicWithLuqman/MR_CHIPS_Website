@@ -35,7 +35,7 @@ window.MR_CHIPS_DATA = {
     { id: "large-chips", category: "chips_combos", name: "Large Chips", desc: "A larger serving of our crispy chips, ideal for a bigger appetite or sharing.", price: 45, tag: "Chips" },
     { id: "extra-large-chips", category: "chips_combos", name: "Extra-large Chips", desc: "Our biggest portion of chips, made for sharing.", price: 65, tag: "Chips" },
     { id: "vienna-and-chips", category: "chips_combos", name: "Vienna and Chips", desc: "One grilled vienna served with a portion of chips.", price: 38, tag: "Combo" },
-    { id: "two-viennas-small-chips", category: "chips_combos", name: "2 Viennas and Small Chips", desc: "Two grilled viennas served with a small portion of chips.", price: 50, tag: "Combo" },
+    { id: "two-viennas-small-chips", category: "chips_combos", name: "2 Viennas and Small Chips", desc: "Two grilled viennas served with a small portion of chips.", price: 50, tag: "Popular" },
     { id: "small-russian-small-chips", category: "chips_combos", name: "Small Russian and Small Chips", desc: "A small russian served with a small portion of chips.", price: 45, tag: "Combo" },
     { id: "large-russian-large-chips", category: "chips_combos", name: "Large Russian and Large Chips", desc: "A large russian served with a large portion of chips.", price: 75, tag: "Combo" },
     { id: "four-viennas-large-chips", category: "chips_combos", name: "4 Viennas and Large Chips", desc: "Four grilled viennas served with a large portion of chips.", price: 98, tag: "Combo" },

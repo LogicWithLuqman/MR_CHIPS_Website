@@ -19,14 +19,11 @@
   };
 
   const el = {
-    menuGrid: document.getElementById("menuGrid"),
     promoCard: document.getElementById("promoCard"),
-    drinksContent: document.getElementById("drinksContent"),
     cartBtn: document.getElementById("cartBtn"),
     mobileCartBtn: document.getElementById("mobileCartBtn"),
     mobileOrderBtn: document.getElementById("mobileOrderBtn"),
     heroOrderBtn: document.getElementById("heroOrderBtn"),
-    footerOrderBtn: document.getElementById("footerOrderBtn"),
     cartOverlay: document.getElementById("cartOverlay"),
     cartPanel: document.getElementById("cartPanel"),
     cartClose: document.getElementById("cartClose"),
@@ -245,6 +242,16 @@
       if (!badge) return;
       badge.hidden = count === 0;
       badge.textContent = String(count);
+    });
+
+    const mobileLabel = document.getElementById("mobileCartLabel");
+    if (mobileLabel) mobileLabel.textContent = count ? "Cart " + formatRand(getCartTotal()) : "Cart";
+    document.querySelectorAll(".menu-card__btn[data-add-id], .drink-card [data-add-id]").forEach(function (btn) {
+      const inCart = state.cart.find(function (entry) { return entry.id === btn.getAttribute("data-add-id"); });
+      let tag = btn.querySelector(".add-count");
+      if (!inCart) { if (tag) tag.remove(); return; }
+      if (!tag) { tag = createEl("span", "add-count"); btn.appendChild(tag); }
+      tag.textContent = "· " + inCart.qty + " in order";
     });
 
     if (!el.cartItems || !el.cartEmpty || !el.cartFooter) return;
@@ -556,7 +563,7 @@
       if (event.target === el.cartOverlay) openCart(false);
     });
 
-    [el.orderWhatsAppBtn, el.mobileOrderBtn, el.heroOrderBtn, el.footerOrderBtn].forEach(function (button) {
+    [el.orderWhatsAppBtn, el.mobileOrderBtn, el.heroOrderBtn].forEach(function (button) {
       if (button) button.addEventListener("click", sendOrder);
     });
 
@@ -565,25 +572,58 @@
       setTheme(current === "dark" ? "light" : "dark");
     });
 
+    function closeNav(returnFocus) {
+      if (!el.navMenu || !el.navMenu.classList.contains("is-open")) return;
+      el.navMenu.classList.remove("is-open");
+      if (el.navToggle) {
+        el.navToggle.setAttribute("aria-expanded", "false");
+        if (returnFocus) el.navToggle.focus();
+      }
+    }
+
     if (el.navToggle && el.navMenu) el.navToggle.addEventListener("click", function () {
       const open = el.navMenu.classList.toggle("is-open");
       el.navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        const first = el.navMenu.querySelector(".nav__link");
+        if (first) first.focus();
+      }
     });
 
     document.querySelectorAll(".nav__link").forEach(function (link) {
       link.addEventListener("click", function () {
-        if (el.navMenu) el.navMenu.classList.remove("is-open");
-        if (el.navToggle) el.navToggle.setAttribute("aria-expanded", "false");
+        closeNav(false);
       });
     });
 
+    document.addEventListener("click", function (event) {
+      if (!el.navMenu || !el.navMenu.classList.contains("is-open")) return;
+      if (el.navMenu.contains(event.target) || (el.navToggle && el.navToggle.contains(event.target))) return;
+      closeNav(false);
+    });
+
+    function trapNavFocus(event) {
+      if (event.key !== "Tab" || !el.navMenu || !el.navMenu.classList.contains("is-open")) return;
+      const nodes = [el.navToggle].concat(Array.from(el.navMenu.querySelectorAll("a[href], button:not([disabled])")))
+        .filter(function (node) { return node && node.offsetParent !== null; });
+      if (!nodes.length) return;
+      const first = nodes[0];
+      const last = nodes[nodes.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault(); last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault(); first.focus();
+      }
+    }
+
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape") {
-        openCart(false);
-        if (el.navMenu) el.navMenu.classList.remove("is-open");
-        if (el.navToggle) el.navToggle.setAttribute("aria-expanded", "false");
+        if (el.cartOverlay && !el.cartOverlay.hidden) { openCart(false); return; }
+        closeNav(true);
+        return;
       }
       trapCartFocus(event);
+      trapNavFocus(event);
     });
 
     if (el.tickerToggle) el.tickerToggle.addEventListener("click", function () {
