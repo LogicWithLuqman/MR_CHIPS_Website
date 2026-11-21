@@ -220,7 +220,7 @@ html[data-theme="dark"] .reviews__map-icon { color: var(--gold); }
 
 .back-to-top { position: fixed; right: 1rem; bottom: 1.2rem; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow); display: grid; place-items: center; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 160ms ease; z-index: 900; }
 .back-to-top.is-visible { opacity: 1; pointer-events: auto; }
-.mobile-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 950; display: none; grid-template-columns: 1fr 1.5fr 1fr; gap: 0.6rem; padding: 0.7rem 0.8rem calc(0.7rem + env(safe-area-inset-bottom)); background: rgba(255, 250, 240, 0.96); border-top: 1px solid var(--border); }
+.mobile-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 950; display: none; grid-template-columns: 0.9fr 1.6fr; gap: 0.6rem; padding: 0.7rem 0.8rem calc(0.7rem + env(safe-area-inset-bottom)); background: rgba(255, 250, 240, 0.96); border-top: 1px solid var(--border); }
 html[data-theme="dark"] .mobile-bar { background: rgba(13, 22, 38, 0.96); }
 .mobile-bar__btn, .mobile-bar__cta { position: relative; border: 1px solid var(--border); background: var(--surface); border-radius: 14px; min-height: 54px; font-weight: 800; cursor: pointer; display: grid; place-items: center; gap: 0.15rem; text-decoration: none; }
 .mobile-bar__cta { background: var(--navy); border-color: var(--navy); color: #fff; }

@@ -21,9 +21,7 @@
   const el = {
     promoCard: document.getElementById("promoCard"),
     cartBtn: document.getElementById("cartBtn"),
-    mobileCartBtn: document.getElementById("mobileCartBtn"),
     mobileOrderBtn: document.getElementById("mobileOrderBtn"),
-    heroOrderBtn: document.getElementById("heroOrderBtn"),
     cartOverlay: document.getElementById("cartOverlay"),
     cartPanel: document.getElementById("cartPanel"),
     cartClose: document.getElementById("cartClose"),
@@ -250,14 +248,21 @@
 
   function renderCart() {
     const count = getCartCount();
+    const total = formatRand(getCartTotal());
     [el.cartBadge, el.mobileCartBadge].forEach(function (badge) {
       if (!badge) return;
       badge.hidden = count === 0;
       badge.textContent = String(count);
     });
 
-    const mobileLabel = document.getElementById("mobileCartLabel");
-    if (mobileLabel) mobileLabel.textContent = count ? "Cart " + formatRand(getCartTotal()) : "Cart";
+    const mobileOrderLabel = document.getElementById("mobileOrderLabel");
+    if (mobileOrderLabel) mobileOrderLabel.textContent = count ? "Order Now · " + total : "Order Now";
+    if (el.mobileOrderBtn) {
+      const itemWord = count === 1 ? "item" : "items";
+      el.mobileOrderBtn.setAttribute("aria-label", count
+        ? "Open order, " + count + " " + itemWord + ", total " + total
+        : "Open order");
+    }
     document.querySelectorAll(".menu-card__btn[data-add-id], .drink-card [data-add-id]").forEach(function (btn) {
       const inCart = state.cart.find(function (entry) { return entry.id === btn.getAttribute("data-add-id"); });
       let tag = btn.querySelector(".add-count");
@@ -316,7 +321,7 @@
       fragment.appendChild(row);
     });
     el.cartItems.appendChild(fragment);
-    if (el.cartTotal) el.cartTotal.textContent = formatRand(getCartTotal());
+    if (el.cartTotal) el.cartTotal.textContent = total;
   }
 
   function getZonedParts(date) {
@@ -570,17 +575,13 @@
       if (qtyBtn) changeQty(qtyBtn.getAttribute("data-qty-change"), Number(qtyBtn.getAttribute("data-delta")));
     });
 
-    [el.cartBtn, el.mobileCartBtn].forEach(function (button) {
-      if (button) button.addEventListener("click", function () { openCart(true); });
-    });
+    if (el.cartBtn) el.cartBtn.addEventListener("click", function () { openCart(true); });
     if (el.cartClose) el.cartClose.addEventListener("click", function () { openCart(false); });
     if (el.cartOverlay) el.cartOverlay.addEventListener("click", function (event) {
       if (event.target === el.cartOverlay) openCart(false);
     });
 
-    [el.mobileOrderBtn, el.heroOrderBtn].forEach(function (button) {
-      if (button) button.addEventListener("click", function () { openCart(true); });
-    });
+    if (el.mobileOrderBtn) el.mobileOrderBtn.addEventListener("click", function () { openCart(true); });
     if (el.orderWhatsAppBtn) el.orderWhatsAppBtn.addEventListener("click", sendOrder);
 
     if (el.themeToggle) el.themeToggle.addEventListener("click", function () {
