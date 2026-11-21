@@ -152,14 +152,12 @@
       const card = document.querySelector('[data-menu-id="' + item.id + '"]');
       if (!card) return;
       const name = card.querySelector(".menu-card__name");
-      const desc = card.querySelector(".menu-card__desc");
       const tag = card.querySelector(".menu-card__category");
       const price = card.querySelector(".menu-card__price");
       const button = card.querySelector("[data-add-id]");
       if (name) name.textContent = item.name;
-      if (desc) desc.textContent = item.desc;
       if (tag) tag.textContent = item.tag;
-      if (price) price.textContent = formatRand(item.price) + (item.unit ? " /100g" : "");
+      if (price) price.textContent = formatRand(item.price);
       if (button) {
         button.setAttribute("data-add-id", item.id);
         button.setAttribute("aria-label", "Add " + item.name + " to order");
@@ -174,7 +172,21 @@
       const name = card.querySelector("h3");
       const price = card.querySelector(".drink-card__price");
       const button = card.querySelector("[data-add-id]");
-      if (name) name.textContent = item.name;
+      if (name) {
+        if (item.category === "slush" || item.category === "slush_crush") {
+          const parts = item.category === "slush"
+            ? ["Slush", "Puppie", item.name.replace("Slush Puppie ", "")]
+            : ["Slush", "Puppie Crush", item.name.replace("Slush Puppie Crush ", "")];
+          name.textContent = "";
+          name.setAttribute("aria-label", item.name);
+          parts.forEach(function (part, index) {
+            const span = createEl("span", "drink-card__line" + (index === 2 ? " drink-card__size" : ""), part);
+            name.appendChild(span);
+          });
+        } else {
+          name.textContent = item.name;
+        }
+      }
       if (price) price.textContent = formatRand(item.price);
       if (button) {
         button.setAttribute("data-add-id", item.id);
@@ -201,7 +213,7 @@
       card.hidden = card.getAttribute("data-category") !== category;
     });
 
-    if (isMenu && el.promoCard) el.promoCard.hidden = category !== "chips_combos";
+    if (isMenu && el.promoCard) el.promoCard.hidden = false;
     const panel = document.getElementById(isMenu ? "menuPanel" : "drinksPanel");
     if (panel && activeId) panel.setAttribute("aria-labelledby", activeId);
 
@@ -439,8 +451,7 @@
       state.cart.forEach(function (entry) {
         const data = getItem(entry.id);
         if (!data) return;
-        const weight = data.portions ? " (" + entry.qty * 100 + "g)" : "";
-        lines.push("- " + entry.qty + " x " + data.name + weight + " (" + formatRand(data.price * entry.qty) + ")");
+        lines.push("- " + entry.qty + " x " + data.name + " (" + formatRand(data.price * entry.qty) + ")");
       });
       lines.push("");
       lines.push("Total: " + formatRand(getCartTotal()));
@@ -459,6 +470,12 @@
     if (!state.cart.length) {
       openCart(true);
       showToast("Add items to your order first");
+      return;
+    }
+    if (!el.pickupTime || !el.pickupTime.value) {
+      openCart(true);
+      if (el.pickupTime) el.pickupTime.focus();
+      showToast("Choose a pickup time first");
       return;
     }
     if (!isOpenNow() && !window.confirm("The shop is currently closed. Send the order request anyway?")) return;
@@ -546,9 +563,7 @@
     document.body.addEventListener("click", function (event) {
       const addBtn = event.target.closest("[data-add-id]");
       if (addBtn) {
-        const portionInput = addBtn.getAttribute("data-portion-input");
-        const amount = portionInput ? document.getElementById(portionInput) : null;
-        addToCart(addBtn.getAttribute("data-add-id"), amount ? amount.value : 1);
+        addToCart(addBtn.getAttribute("data-add-id"), 1);
         return;
       }
       const qtyBtn = event.target.closest("[data-qty-change]");
@@ -563,9 +578,10 @@
       if (event.target === el.cartOverlay) openCart(false);
     });
 
-    [el.orderWhatsAppBtn, el.mobileOrderBtn, el.heroOrderBtn].forEach(function (button) {
-      if (button) button.addEventListener("click", sendOrder);
+    [el.mobileOrderBtn, el.heroOrderBtn].forEach(function (button) {
+      if (button) button.addEventListener("click", function () { openCart(true); });
     });
+    if (el.orderWhatsAppBtn) el.orderWhatsAppBtn.addEventListener("click", sendOrder);
 
     if (el.themeToggle) el.themeToggle.addEventListener("click", function () {
       const current = document.documentElement.getAttribute("data-theme") || "light";
